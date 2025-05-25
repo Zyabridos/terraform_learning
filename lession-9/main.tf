@@ -30,14 +30,7 @@ data "aws_ami" "latest_Ubuntu" {
   }
 }
 
-data "aws_ami" "latest_amazon_linux" {
-  owners      = ["137112412989"]
-  most_recent = true
-  filter {
-    name   = "name"                                                       # по какому ключу фильтровать
-    values = ["amzn2-ami-kernel-5.10-hvm-2.0.20250512.0-x86_64-gp2"]      # значение ключа
-  }
-}
+ 
 
 data "aws_ami" "latest_Windows" {
   owners      = ["801119661308"]

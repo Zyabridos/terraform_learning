@@ -56,9 +56,4 @@ resource "aws_security_group" "my_webServer" {
   }
 }
 
-output "web_server_instance_id" {
-  value = aws_instance.my_webServer.id
-}
-output "web_server_public_id_adress" {
-  value = aws_eip.my_static_ip.public_ip
-}
+ 
