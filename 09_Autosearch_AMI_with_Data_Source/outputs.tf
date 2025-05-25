@@ -14,10 +14,10 @@ output "latest_Ubuntu_ami_name" {
   value = data.aws_ami.latest_Ubuntu.name
 }
 
-output "latest_Windows_id" {
-  value = data.aws_ami.latest_Windows
+output "latest_Windows_ami_id" {
+  value = data.aws_ami.latest_Windows.id
 }
 
 output "latest_Windows_ami_name" {
-  value = data.aws_ami.latest_Windows
+  value = data.aws_ami.latest_Windows.name
 }
