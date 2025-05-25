@@ -14,7 +14,6 @@ variable "allowed_ports" {
   default     = [80, 443, 22, 8080]
 }
 
-
 variable "common_tags" {
   description = "Common tags to apply to all resources"
   type        = map
