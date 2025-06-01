@@ -8,9 +8,10 @@ This project provisions a basic infrastructure on AWS using **two Terraform laye
 
 ### Structure
 ```graphql
-`20-terraform-remote-state/
+20-terraform-remote-state/
 ├── network/
-│   └── main.tf # Creates VPC and networking resources ├── servers/
+│   └── network.tf # Creates VPC and networking resources
+├── servers/
 │   └── main.tf # Creates EC2 instance and security group` 
 ```
 ----------
