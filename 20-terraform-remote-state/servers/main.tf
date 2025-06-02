@@ -16,25 +16,24 @@ terraform {
   }
 }
 
-data "aws_ssm_parameter" "ami_eu_north" {
-  name   = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
-}
-
 resource "aws_instance" "europe_server" {
   ami           = data.aws_ssm_parameter.ami_eu_north.value
   instance_type = "t3.micro"
   vpc_security_group_ids = [aws_security_group.my_server.id]
   subnet_id     = data.terraform_remote_state.network.outputs.public_subnet_ids[0]
-  user_data     = <<EOF > /var/www/html/index.html
-  <html>
-  <h2>Build by Power of Terraform <font color="red">v.0.12</font></h2><br>
-  Owner ${first_name} ${last_name} <br>
 
-  %{ for name in names ~}
-  Hello ${name} from ${first_name}<br>
-  %{ endfor ~}
+  user_data = <<-EOF
+    #!/bin/bash
+    mkdir -p /var/www/html
 
-  </html>
+    cat <<EOT > /var/www/html/index.html
+    <html>
+    <h2>Build by Power of Terraform <font color="red">v.0.12</font></h2><br>
+    <p>Owner: Nina Ziabrina</p>
+    <p>Hello John from Nina</p>
+    <p>Hello Masha from Nina</p>
+    </html>
+    EOT
   EOF
 
   tags = {

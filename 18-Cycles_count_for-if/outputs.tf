@@ -1,10 +1,12 @@
 // print name of users with, whose name is shorter than 6
 output "custom_if_length" {
   value = [
-    for x in aws_iam_user.users:
+    for x in aws_iam_user.users :
+    x.name
     if length(x.name) < 6
   ]
 }
+
 
 // print nice MAP of Instances: Public ID
 output "servers_all" {
